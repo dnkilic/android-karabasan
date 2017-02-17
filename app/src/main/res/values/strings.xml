@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Karabasan</string>
+
+    <string name="announce_intro">merhaba\nben karabasan…\nsenin adın ne güzelim</string>
+    <string name="announce_name_response_low">Uzak doğudan mısın yoksa başka bir gezegenden mi?\n%1$d harfli ismini biraz zor telafuz ediyorum da…\n%2$s…\n%2$sh%2$s!!!\nee.. olmadı galiba… hehehehehee!\n%2$s…\nkaç yaşındasın?</string>
+    <string name="announce_name_response">%1$s…\nkaç yaşındasın?</string>
+    <string name="announce_name_response_high">maaşşallaaaah!\nnüfus memuru ananı babanı pek sevmiyormuş galiba!!!\n%1$s\n%2$s…\nkaç yaşındasın?</string>
+
+    <string name="announce_age_level_one">çok küçükmüşsün be! sen git anan gelsin lan lavuk!\nboyun kaç cm senin?</string>
+    <string name="announce_age_level_two">sütünü içtin mi yavrum\n?</string>
+    <string name="announce_age_level_three">iyi iyi 18ine pek bişi kalmamış… Uyu da büyü!\nboyun kaç cm senin?</string>
+    <string name="announce_age_level_four">Oy kullanacanmı genç?\n?</string>
+    <string name="announce_age_level_five">vayy! naber morruk? Nerde eski programcılar dimi mirim?\nboyun kaç cm senin?</string>
+    <string name="announce_age_level_six">Yuh bayağı yaşlısın… yaşlılar muhattabım diildir.. Git estetik yaptır gel…\nboyun kaç cm senin?</string>
+    <string name="announce_age_level_seven">Ulan bunak! Klavyeyi nası görüyon? Geber de helvanı yiyelim. hehehe!\nboyun kaç cm senin?</string>
+    <string name="announce_age_level_eight">Kafa bulma lan göt\nkaç yaşındasın?</string>
+
+    <string name="announce_milk_positive">Beynine pek etkisi olmamış, git biraz da PEPSİ iç!\nboyun kaç cm senin?</string>
+    <string name="announce_milk_negative">bok iç o zaman!\nboyun kaç cm senin?</string>
+
+    <string name="announce_yes_no">(e/h)?</string>
+    <string name="announce_yes">e</string>
+    <string name="announce_no">h</string>
+
+    <string name="announce_vote_positive">ver de gör ebeninkini!\nboyun kaç cm senin?</string>
+    <string name="announce_vote_negative">Ulan sen ne biçim Tee.Cee vatandaşısın? Hayvan!…\nboyun kaç cm senin?</string>
+
+    <string name="announce_height_level_one">Deden pigmelerin hangi kavminden lan?\noldu olcak kilonu da söyle bari… çok umrumda ya…</string>
+    <string name="announce_height_level_two">Kısa boylu olman önemli diil, diyeceğimi sanıyorsan yanılıyorsun pis cüce!\noldu olcak kilonu da söyle bari… çok umrumda ya…</string>
+    <string name="announce_height_level_three">Bacaklarına biraz gübre ektir. Faydası olur. kah!kih!koh!\noldu olcak kilonu da söyle bari… çok umrumda ya…</string>
+    <string name="announce_height_level_four">iyi… bana ne… sorduk mu?\noldu olcak kilonu da söyle bari… çok umrumda ya…</string>
+    <string name="announce_height_level_five">Oha! fasülye sırığı!\noldu olcak kilonu da söyle bari… çok umrumda ya…</string>
+    <string name="announce_height_level_six">Yok deve!! kaç santim dedik, milim demedik!\nboyun kaç cm senin?</string>
+
+    <string name="announce_weight_level_one">Rüzgarlı havada dışarı falan çıkma hehehe!</string>
+    <string name="announce_weight_level_two">o kadar yemiş yersen ishal de olursuun, kabız da!</string>
+    <string name="announce_weight_level_three">sen normalsin o yüzden dalga geçmiicem… noormaal! noormaal! hehehe!!</string>
+    <string name="announce_weight_level_four">Lütfen oturduğun koltuk sağlam kalsın!\n!</string>
+    <string name="announce_weight_level_five">Anlamıştım… 2 saattir klavyenin anasını ağlattın\n!</string>
+    <string name="announce_weight_level_six">Duba! dikkat et benim üstüme düşme!\n</string>
+
+    <string name="announce_single_joke">\ngeri zekalı taklidi yap bakiim…\nTamam tamam bukadar yeter!!!\n</string>
+
+    <string name="announce_naming_question">\nsana kısaca %1$soş diyebilir miyim??</string>
+    <string name="announce_eyes_question">\nsana gözlerinin çok güzel olduğunu söyleyen olmuşmuydu hiç?</string>
+    <string name="announce_fifty_million_question">\nyavrum\n\nayda 50 milyon kazanmak ister misin?</string>
+    <string name="announce_select_number_question">\nbi sayı tut.\ntuttunmu?</string>
+    <string name="announce_your_name_question">\nAdın nerden geliyo?</string>
+
+    <string name="announce_your_name_positive">\nüüüü! baya uzaktan geliyomuş!\n%1$s\n%2$s</string>
+
+    <string name="announce_eyes_positive">yalan söylemiş!\nlaugh\n</string>
+    <string name="announce_eyes_negative">doğrudur. çünkü gözlerin güzel diil!\nlaugh\n</string>
+
+    <string name="announce_fifty_positive">o zaman Ay\'a gitmen lazım…\nhe he he he…\n</string>
+    <string name="announce_fifty_negative">iyi… zaten Ay\'da sağlıklı çalışabileceğini sanmıyordum.\n%1$s\n</string>,
+
+    <string name="announce_number_positive">şimdi de bırak!\nhahahaha!! ay ben ölmiim emi!\n</string>
+    <string name="announce_number_negative"></string>
+
+    <string name="announce_naming_positive">iyi… ama ben demek istemiyorum!\n%1$s\n</string>
+    <string name="announce_naming_negative">%1$soş! %2$soş! %3$soş!\n%4$s\n</string>
+
+    <string name="announce_how_positive">böyle bir hayatta nasıl iyi oluyorsunuz ki lan\n?\nbize de söyle yolunu biz de iyi olalım..\neyse…\nöğrencimisin?</string>
+    <string name="announce_how_negative">derdini anlat bana! açıl bana yavrucuum! utanma ben doktorum…\nKötü olmana sebep olan şey nedir?</string>
+
+</resources>
