@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
             if(text.length() < 3) {
                 announce = getResources().getString(R.string.announce_name_response_low, text.length(), text);
             } else if(text.length() > 7) {
-                announce = getResources().getString(R.string.announce_name_response_high, getRandomStringFromResources(R.array.laugh),text);
+                announce = getResources().getString(R.string.announce_name_response_high, getRandomStringFromResources(R.array.laugh), text);
             } else {
                 announce = getResources().getString(R.string.announce_name_response, text);
             }
