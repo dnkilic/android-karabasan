@@ -8,6 +8,23 @@
         <item>eki!eki!eki! köh!köh!köh! ayy nekadar neşeliyim!!</item>
     </string-array>
 
+    <string-array name="swearing">
+        <item>piç</item>
+        <item>ibne</item>
+        <item>göt</item>
+        <item>am</item>
+        <item>şerefsiz</item>
+        <item>salak</item>
+        <item>aptal</item>
+        <item>gerizekalı</item>
+        <item>bok</item>
+        <item>çiş</item>
+        <item>pezevenk</item>
+        <item>götoş</item>
+        <item>sik</item>
+        <item>orospu</item>
+    </string-array>
+
 </resources>
 
 

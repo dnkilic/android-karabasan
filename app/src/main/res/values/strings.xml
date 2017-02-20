@@ -2,7 +2,7 @@
     <string name="app_name">Karabasan</string>
 
     <string name="announce_intro">merhaba\nben karabasan…\nsenin adın ne güzelim</string>
-    <string name="announce_name_response_low">Uzak doğudan mısın yoksa başka bir gezegenden mi?\n%1$d harfli ismini biraz zor telafuz ediyorum da…\n%2$s…\n%2$sh%2$s!!!\nee.. olmadı galiba… hehehehehee!\n%2$s…\nkaç yaşındasın?</string>
+    <string name="announce_name_response_low">Uzak doğudan mısın yoksa başka bir gezegenden mi?\n%1$d harfli ismini biraz zor telafuz ediyorum da…\n%2$s…\n%2$sh%2$s!!!\neee.. olmadı galiba… hehehehehee!\n%2$s…\nkaç yaşındasın?</string>
     <string name="announce_name_response">%1$s…\nkaç yaşındasın?</string>
     <string name="announce_name_response_high">maaşşallaaaah!\nnüfus memuru ananı babanı pek sevmiyormuş galiba!!!\n%1$s\n%2$s…\nkaç yaşındasın?</string>
 
@@ -63,5 +63,12 @@
 
     <string name="announce_how_positive">böyle bir hayatta nasıl iyi oluyorsunuz ki lan\n?\nbize de söyle yolunu biz de iyi olalım..\neyse…\nöğrencimisin?</string>
     <string name="announce_how_negative">derdini anlat bana! açıl bana yavrucuum! utanma ben doktorum…\nKötü olmana sebep olan şey nedir?</string>
+
+
+
+    <string name="announce_swearing_name_one">a… aaa! terbiyesiz! ağzına sıçarım senin pezevenk! göt oğlanı liboş! zurnik!</string>
+    <string name="announce_swearing_name_two">hiii! git bakim ağzına biber sür gel!!!</string>
+
+
 
 </resources>

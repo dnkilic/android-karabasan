@@ -319,6 +319,20 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
         return myString[randomGenerator.nextInt(myString.length)];
     }
 
+    public boolean isSwearing(String text) {
+        String[] myString = getResources().getStringArray(R.array.swearing);
+
+        for(String item : myString)
+        {
+            if(text.equals(item))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void consumeNextDialog()
     {
 
