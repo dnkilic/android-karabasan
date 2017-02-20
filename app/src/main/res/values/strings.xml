@@ -44,7 +44,7 @@
 
     <string name="announce_naming_question">\nsana kısaca %1$soş diyebilir miyim??</string>
     <string name="announce_eyes_question">\nsana gözlerinin çok güzel olduğunu söyleyen olmuşmuydu hiç?</string>
-    <string name="announce_fifty_million_question">\nyavrum\n\nayda 50 milyon kazanmak ister misin?</string>
+    <string name="announce_fifty_million_question">\nyavrum\n%1$s\nayda 50 milyon kazanmak ister misin?</string>
     <string name="announce_select_number_question">\n%1$s\nbi sayı tut.\ntuttunmu?</string>
     <string name="announce_your_name_question">\nAdın nerden geliyo?</string>
     <string name="announce_how_question">\nnasılsınız lan?\n?\niyimisin ki?\n</string>
@@ -68,14 +68,17 @@
     <string name="announce_how_negative_question">derdini anlat bana! açıl bana yavrucuum! utanma ben doktorum…\nKötü olmana sebep olan şey nedir?</string>
     <string name="announce_how_negative_two">iyi iyi allah kötülük versin! he he he!!! </string>
 
-    <string name="announce_how_negative_answer">hahahahahaha! git allasen yaw! dert ettiğin şeye bak!</string>
+    <string name="announce_how_negative_answer">\n%1$s\nhahahahahaha! git allasen yaw! dert ettiğin şeye bak!</string>
 
     <string name="announce_student_positive">wah wah wah çok üzüldüm ailenin haberi var mı? ha!haha!hohoho</string>
-    <string name="announce_student_negative">%1$soş! %2$soş! %3$soş!\n%4$s\n</string>
+    <string name="announce_student_negative">ulan insan en azından askerden yırtmak için öğrenci olur! Ama sen tıss!</string>
 
-    <string name="announce_swearing_name_one">a… aaa! terbiyesiz! ağzına sıçarım senin pezevenk! göt oğlanı liboş! zurnik!</string>
-    <string name="announce_swearing_name_two">hiii! git bakim ağzına biber sür gel!!!</string>
+    <string name="announce_tale_one">bak sana şindi konuyla ilgili bir fıkra…\n30 yaşındali bir Alman koskoca bir uçağı…\ntek eliyle kaldırmış..\nadam PİLOTMUŞ lan PİLOT! \n hahahaha!! ay ben ölmiim emi!\n buradan alınacak ders: sakla samanı yorganına göre uzat..\nhahahaha!! ay ben ölmiim emi!\nmemleket nere ? </string>
+    <string name="announce_tale_two">bak sana şindi konuyla ilgili bir fıkra…\n2 laz kuş avlamadaymış…\nbiri niye avlanamıyoz diye dert yanmış…\nÖbürü BENCE KÖPEĞİ DAHA YUKARI ATMALIYIZ\nyani sakla samanı gelir zamanı\nhahahaha!! ay ben ölmiim emi!\nmemleket nere ? </string>
+    <string name="announce_tale_three">bak sana şindi konuyla ilgili bir fıkra…\nadamın biri soğuk çay istemiş…\nçaycı çayı getirmiş…\nadam da ISIT DA İÇELİM KARDEŞİM demiş!\nyani sakla samanı gelir zamanı\nhahahaha!! ay ben ölmiim emi!\nmemleket nere ? </string>
 
+    <string name="announce_where_are_you_one">\nnaaaber pis\n %1$s!\n hahahaha!! ay ben ölmiim emi!\n neyse\n kusura bakma....\ngel senlen oyun oynayak...\nben şimdik 1 ilen 100 arası bi sayı tutiim...\ntuttum.\ntahmin et bakalım..?</string>
+    <string name="announce_where_are_you_two">\nmadem %1$s buralara ne bok yemeye geldin?!\nayrıca %2$s adam falan çıkmaz\n hahahaha!! ay ben ölmiim emi!\n neyse\n kusura bakma....\ngel senlen oyun oynayak...\nben şimdik 1 ilen 100 arası bi sayı tutiim...\ntuttum.\ntahmin et bakalım..?</string>
 
 
 </resources>

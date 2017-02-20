@@ -14,7 +14,8 @@ public class Dialog {
     public static final int ACTION_SELECT_NUMBER = 9;
     public static final int ACTION_YOUR_NAME = 10;
     public static final int ACTION_HOW = 11;
-    public static final int ACTION_YOUR_COUNTRY = 11;
+    public static final int ACTION_YOUR_COUNTRY = 12;
+    public static final int ACTION_STUDENT = 13;
 
     private String question;
     private int inputType;

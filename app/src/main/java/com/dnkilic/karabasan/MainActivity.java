@@ -1,15 +1,12 @@
 package com.dnkilic.karabasan;
 
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
-import android.view.View;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Random;
 
 import static com.dnkilic.karabasan.Dialog.ACTION_EYES;
@@ -20,11 +17,8 @@ import static com.dnkilic.karabasan.Dialog.ACTION_GET_NAME;
 import static com.dnkilic.karabasan.Dialog.ACTION_GET_WEIGHT;
 import static com.dnkilic.karabasan.Dialog.ACTION_HOW;
 import static com.dnkilic.karabasan.Dialog.ACTION_MILK;
-import static com.dnkilic.karabasan.Dialog.ACTION_NAMING;
-import static com.dnkilic.karabasan.Dialog.ACTION_SELECT_NUMBER;
+import static com.dnkilic.karabasan.Dialog.ACTION_STUDENT;
 import static com.dnkilic.karabasan.Dialog.ACTION_VOTE;
-import static com.dnkilic.karabasan.Dialog.ACTION_YOUR_COUNTRY;
-import static com.dnkilic.karabasan.Dialog.ACTION_YOUR_NAME;
 
 public class MainActivity extends AppCompatActivity implements DialogCallback {
 
@@ -40,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         mRecyclerView = (RecyclerView) findViewById(R.id.rvDialog);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -50,30 +43,37 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
         mRecyclerView.setAdapter(mAdapter);
 
         mCandidate = new Candidate();
+
+        insertItemToDialog(new Dialog(getResources().getString(R.string.announce_intro), InputType.TYPE_CLASS_TEXT));
     }
 
-    public void insert1(View view) {
-        mDataset.add(new Dialog(getResources().getString(R.string.announce_intro), InputType.TYPE_CLASS_TEXT));
+    private void insertItemToDialog(Dialog dialog) {
+        mDataset.add(dialog);
         mAdapter.notifyItemInserted(mDataset.size() - 1);
+        mRecyclerView.scrollToPosition(mDataset.size() - 1);
     }
 
     @Override
     public void onTextSend(String text) {
         if(index == ACTION_GET_NAME) {
             mCandidate.setName(text);
-            String announce;
 
-            if(text.length() < 3) {
-                announce = getResources().getString(R.string.announce_name_response_low, text.length(), text);
-            } else if(text.length() > 7) {
-                announce = getResources().getString(R.string.announce_name_response_high, getRandomStringFromResources(R.array.laugh), text);
-            } else {
-                announce = getResources().getString(R.string.announce_name_response, text);
+            String announce = "";
+
+            if(isSwearing(text))
+            {
+                announce = appendToAnnounce(announce, getRandomStringFromResources(R.array.swearing_response));
             }
 
-            mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
+            if(text.length() < 3) {
+                announce = appendToAnnounce(announce, getResources().getString(R.string.announce_name_response_low, text.length(), text));
+            } else if(text.length() > 7) {
+                announce = appendToAnnounce(announce, getResources().getString(R.string.announce_name_response_high, getRandomStringFromResources(R.array.laugh), text));
+            } else {
+                announce = appendToAnnounce(announce, getResources().getString(R.string.announce_name_response, text));
+            }
 
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
             index = ACTION_GET_AGE;
         }
         else if(index == ACTION_GET_AGE) {
@@ -125,8 +125,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
                 dialog = new Dialog(announce, InputType.TYPE_CLASS_NUMBER);
             }
 
-            mDataset.add(dialog);
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
+            insertItemToDialog(dialog);
         } else if(index == ACTION_GET_HEIGHT) {
             Integer height;
             String announce;
@@ -162,8 +161,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
                 announce = getResources().getString(R.string.announce_height_level_six);
             }
 
-            mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
         } else if(index == ACTION_MILK) {
             String announce;
             if(text.equals(getResources().getString(R.string.announce_yes))){
@@ -172,8 +170,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
                 announce = getResources().getString(R.string.announce_milk_negative);
             }
             index = ACTION_GET_HEIGHT;
-            mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
         } else if(index == ACTION_VOTE) {
             String announce;
             if(text.equals(getResources().getString(R.string.announce_yes))){
@@ -182,8 +179,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
                 announce = getResources().getString(R.string.announce_vote_negative);
             }
             index = ACTION_GET_HEIGHT;
-            mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_NUMBER));
         } else if(index == ACTION_GET_WEIGHT) {
             Integer weight;
             String announce;
@@ -225,79 +221,58 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
                 announce = announce + getResources().getString(R.string.announce_single_joke);
             }
 
-            mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT));
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
+            index = ACTION_FIFTY;
+            announce = appendToAnnounce(announce, getResources().getString(R.string.announce_fifty_million_question, mCandidate.getName()));
 
-           /* ArrayList<Integer> jokeList = new ArrayList<>();
-            jokeList.add(ACTION_EYES);
-            jokeList.add(ACTION_FIFTY);
-            jokeList.add(ACTION_SELECT_NUMBER);
-            jokeList.add(ACTION_YOUR_NAME);
-            jokeList.add(ACTION_YOUR_COUNTRY);
-
-            makeJoke(jokeList);
-
-
-
-            //TODO naming e/h -> How are you -> Student
-
-
-
-            switch (random.nextInt(5))
-            {
-                //ok + adın nereden geliyor/50million/number select
-                case 0:
-                    announce = announce + getResources().getString(R.string.announce_eyes_question);
-                    mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
-                    index = ACTION_EYES;
-                    break;
-                // naming/your name
-                case 1:
-                    announce = announce + getResources().getString(R.string.announce_fifty_million_question);
-                    mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
-                    index = ACTION_FIFTY;
-                    break;
-                case 2:
-                    announce = announce + getResources().getString(R.string.announce_naming_question);
-                    mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
-                    index = ACTION_NAMING;
-                    break;
-                case 3:
-                    // naming
-                    announce = announce + getResources().getString(R.string.announce_select_number_question);
-                    mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
-                    index = ACTION_SELECT_NUMBER;
-                    break;
-                case 4:
-                    announce = announce + getResources().getString(R.string.announce_your_name_question);
-                    mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT));
-                    index = ACTION_YOUR_NAME;
-                    break;
-                default:
-                    announce = announce + getResources().getString(R.string.announce_naming_question);
-                    mDataset.add(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
-                    index = ACTION_NAMING;
-                    break;
-            }
-            mAdapter.notifyItemInserted(mDataset.size() - 1);
-        } else if(index == ACTION_EYES) {
-
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
         } else if(index == ACTION_FIFTY) {
+            String announce;
+            if(text.equals(getResources().getString(R.string.announce_yes))){
+                announce = getResources().getString(R.string.announce_fifty_positive);
+            } else {
+                announce = getResources().getString(R.string.announce_fifty_negative, getRandomStringFromResources(R.array.laugh));
+            }
 
-        } else if(index == ACTION_NAMING) {
-            //TODO How are you
+            announce = appendToAnnounce(announce, getString(R.string.announce_eyes_question));
+            index = ACTION_EYES;
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
+        } else if(index == ACTION_EYES) {
+            String announce;
+            if(text.equals(getResources().getString(R.string.announce_yes))){
+                announce = getResources().getString(R.string.announce_eyes_positive);
+            } else {
+                announce = getResources().getString(R.string.announce_eyes_negative);
+            }
 
-        } else if(index == ACTION_SELECT_NUMBER) {
+            announce = appendToAnnounce(announce, getString(R.string.announce_how_question));
+            index = ACTION_HOW;
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
+        } else if(index == ACTION_HOW) {
+            String announce;
+            if(text.equals(getResources().getString(R.string.announce_yes))){
+                announce = getResources().getString(R.string.announce_how_positive);
+            } else {
+                announce = getResources().getString(R.string.announce_how_negative_two);
+            }
 
-        } else if(index == ACTION_YOUR_NAME) {
-            //TODO naming, select number
-        } else if(index == ACTION_HOW) {*/
-            //TODO student
+            announce = appendToAnnounce(announce, getString(R.string.announce_student_question));
+            index = ACTION_STUDENT;
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
+        }else if(index == ACTION_STUDENT) {
+            String announce;
+            if(text.equals(getResources().getString(R.string.announce_yes))){
+                announce = getResources().getString(R.string.announce_student_positive);
+            } else {
+                announce = getResources().getString(R.string.announce_student_negative);
+            }
+
+            announce = appendToAnnounce(announce, getString(R.string.announce_student_question));
+            index = ACTION_STUDENT;
+            insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
         }
-
-
-
     }
+
+
 
   /*  private void makeJoke(ArrayList<Integer> jokeList) {
         Random random = new Random();
@@ -312,6 +287,11 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
         }
     }
 */
+    private String appendToAnnounce(String announce, String append)
+    {
+        return announce + "\n" + append;
+    }
+
     public String getRandomStringFromResources(int resourceId) {
         Random randomGenerator = new Random();
         String[] myString;

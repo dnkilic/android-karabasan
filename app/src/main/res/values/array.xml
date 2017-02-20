@@ -8,6 +8,11 @@
         <item>eki!eki!eki! köh!köh!köh! ayy nekadar neşeliyim!!</item>
     </string-array>
 
+    <string-array name="swearing_response">
+        <item>a… aaa! terbiyesiz! zurnik!</item>
+        <item>hiii! git bakim ağzına biber sür gel!!!</item>
+    </string-array>
+
     <string-array name="swearing">
         <item>piç</item>
         <item>ibne</item>
