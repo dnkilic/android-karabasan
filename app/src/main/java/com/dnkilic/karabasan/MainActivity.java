@@ -1,14 +1,23 @@
 package com.dnkilic.karabasan;
 
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.view.View.GONE;
 import static com.dnkilic.karabasan.Dialog.ACTION_EYES;
 import static com.dnkilic.karabasan.Dialog.ACTION_FIFTY;
 import static com.dnkilic.karabasan.Dialog.ACTION_GET_AGE;
@@ -24,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private EditText etAnswer;
+    private ImageButton ibMuteTTS;
+    private ImageButton ibOpenTTS;
     private ArrayList<Dialog> mDataset;
     private Candidate mCandidate;
     private int index;
@@ -34,26 +45,98 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        ibMuteTTS = (ImageButton) findViewById(R.id.ibMuteTTS);
+        ibOpenTTS = (ImageButton) findViewById(R.id.ibOpenTTS);
+
+        ibMuteTTS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sp = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean("TTS", true);
+                editor.apply();
+
+                ibMuteTTS.setVisibility(GONE);
+                ibOpenTTS.setVisibility(View.VISIBLE);
+            }
+        });
+
+        ibOpenTTS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sp = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean("TTS", false);
+                editor.apply();
+
+                ibMuteTTS.setVisibility(View.VISIBLE);
+                ibOpenTTS.setVisibility(GONE);
+            }
+        });
+
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        if(sp.getBoolean("TTS", false))
+        {
+            ibMuteTTS.setVisibility(GONE);
+            ibOpenTTS.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            ibMuteTTS.setVisibility(View.VISIBLE);
+            ibOpenTTS.setVisibility(GONE);
+        }
+
         mRecyclerView = (RecyclerView) findViewById(R.id.rvDialog);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mDataset = new ArrayList<>();
         mAdapter = new DialogAdapter(mDataset, this);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setItemViewCacheSize(mDataset.size());
+        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "terminal.ttf");
+        etAnswer = (EditText) findViewById(R.id.etAnswer);
+        etAnswer.setTypeface(font);
+        etAnswer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    boolean handled = false;
+                    if (actionId == EditorInfo.IME_ACTION_SEND) {
+                        if(etAnswer.getText().length()>0)
+                        {
+                            Dialog current = mDataset.get(mDataset.size() - 1);
+                            current.setAnswer(etAnswer.getText().toString());
+                            onTextSend(etAnswer.getText().toString());
+                            handled = true;
+                            etAnswer.setText("");
+                            //etAnswer.setEnabled(false);
+                        }
+                    }
+                    return handled;
+                }
+            });
+
 
         mCandidate = new Candidate();
 
         insertItemToDialog(new Dialog(getResources().getString(R.string.announce_intro), InputType.TYPE_CLASS_TEXT));
+        etAnswer.requestFocus();
+    }
+
+    @Override
+    public void onBackPressed() {
+        insertItemToDialog(new Dialog(getResources().getString(R.string.announce_intro), InputType.TYPE_CLASS_TEXT));
+        //super.onBackPressed();
     }
 
     private void insertItemToDialog(Dialog dialog) {
         mDataset.add(dialog);
         mAdapter.notifyItemInserted(mDataset.size() - 1);
+        mAdapter.notifyDataSetChanged();
         mRecyclerView.scrollToPosition(mDataset.size() - 1);
     }
 
-    @Override
     public void onTextSend(String text) {
         if(index == ACTION_GET_NAME) {
             mCandidate.setName(text);
@@ -258,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
             announce = appendToAnnounce(announce, getString(R.string.announce_student_question));
             index = ACTION_STUDENT;
             insertItemToDialog(new Dialog(announce, InputType.TYPE_CLASS_TEXT, true));
-        }else if(index == ACTION_STUDENT) {
+        } else if(index == ACTION_STUDENT) {
             String announce;
             if(text.equals(getResources().getString(R.string.announce_yes))){
                 announce = getResources().getString(R.string.announce_student_positive);
@@ -287,8 +370,7 @@ public class MainActivity extends AppCompatActivity implements DialogCallback {
         }
     }
 */
-    private String appendToAnnounce(String announce, String append)
-    {
+    private String appendToAnnounce(String announce, String append) {
         return announce + "\n" + append;
     }
 

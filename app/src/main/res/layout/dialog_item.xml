@@ -30,16 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="371dp"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionSend"
-            android:background="@android:color/transparent"
-            android:text=""
-            android:inputType="textImeMultiLine"
-            android:ems="10"
-            android:id="@+id/etAnswer" />
+
     </LinearLayout>
 
 </LinearLayout>

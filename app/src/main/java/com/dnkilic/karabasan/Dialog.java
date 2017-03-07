@@ -20,6 +20,7 @@ public class Dialog {
     private String question;
     private int inputType;
     private boolean yesNoQuestion = false;
+    private String answer;
 
     public Dialog(String question, int inputType) {
         this.question = question;
@@ -43,5 +44,14 @@ public class Dialog {
 
     public boolean isYesNoQuestion() {
         return yesNoQuestion;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+
+        this.answer = answer;
     }
 }
